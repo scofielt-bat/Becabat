@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>valendo </title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ffccdd, #ffe6f0);
+            color: #4a4a4a;
+            text-align: center;
+        }
+        
+        header {
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #b30059;
+        }
+        
+        p.frase {
+            font-size: 1.5em;
+            color: #800040;
+            margin-bottom: 30px;
+        }
+        
+        .galeria {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .galeria img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .galeria img:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-style: italic;
+            color: #99004d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1> Dois Estranhos</h1>
+        <p class="frase">"Mesmo onde sombras devoram estrelas e realidades se desfazem, há algo que persiste — um elo silencioso, incurável, que nenhuma escuridão consegue sepultar.."</p>
+    </header>
+
+    <div class="galeria">
+        <img src="2.jpg" alt="Casal 1">
+        <img src="3.jpg" alt="Casal 2">
+        <img src="4.jpg" alt="Casal 3">
+        <img src="5.jpg" alt="Casal 4">
+        <img src="22.jpg" alt="Casal 5">
+        <img src="7.jpg" alt="Casal 6">
+        <img src="8.jpg" alt="Casal 7">
+        <img src="9.jpg" alt="Casal 8">
+        <img src="10.jpg" alt="Casal 9">
+        <img src="11.jpg" alt="Casal 9">
+        <img src="12.jpg" alt="Casal 9">
+        <img src="13.jpg" alt="Casal 9">
+        <img src="14.jpg" alt="Casal 9">
+        <img src="15.jpg" alt="Casal 9">
+        <img src="16.jpg" alt="Casal 9">
+        <img src="17.jpg" alt="Casal 9">
+        <img src="18.jpg" alt="Casal 9">
+        <img src="19.jpg" alt="Casal 9">
+        <img src="20.jpg" alt="Casal 9">
+        <img src="21.jpg" alt="Casal 9">
+
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="fechar" onclick="fecharPopup()">&times;</span>
+        <span class="anterior" onclick="anterior()">&#10094;</span>
+        <img class="popup-content" id="imgPopup">
+        <span class="proximo" onclick="proximo()">&#10095;</span>
+    </div>
+
+    <script>
+        const imagens = document.querySelectorAll('.galeria img');
+        const popup = document.getElementById('popup');
+        const imgPopup = document.getElementById('imgPopup');
+        let indiceAtual = 0;
+
+        imagens.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                abrirPopup(index);
+            });
+        });
+
+        function abrirPopup(index) {
+            indiceAtual = index;
+            imgPopup.src = imagens[indiceAtual].src;
+            popup.style.display = 'flex';
+        }
+
+        function fecharPopup() {
+            popup.style.display = 'none';
+        }
+
+        function anterior() {
+            indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
+            imgPopup.src = imagens[indiceAtual].src;
+        }
+
+        function proximo() {
+            indiceAtual = (indiceAtual + 1) % imagens.length;
+            imgPopup.src = imagens[indiceAtual].src;
+        }
+
+        // Fechar ao clicar fora da imagem
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                fecharPopup();
+            }
+        });
+    </script>
+
+    <audio autoplay loop>
+    <source src="p2.mp3" type="audio/mpeg">
+  </audio>
+    <a class="voltar" href="index.html">← Voltar para o Início</a>
+    <footer>
+        Feito com carinho 💖
+    </footer>
+
+</body>
+
+</html>
