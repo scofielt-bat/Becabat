@@ -48,6 +48,84 @@
             font-style: italic;
             color: #993366;
         }
+        
+        .mensagem {
+            position: fixed;
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #ff66a3;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            animation: aparecer 2s ease, sumir 1s ease 28s forwards;
+        }
+        
+        .chuva img {
+            position: fixed;
+            top: -150px;
+            width: 80px;
+            opacity: 0.9;
+            z-index: 999;
+            animation: cair 6s linear infinite;
+        }
+        /* Animação da queda */
+        
+        @keyframes cair {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Posições e atrasos para parecer aleatório */
+        
+        .chuva img:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .chuva img:nth-child(2) {
+            left: 15%;
+            animation-delay: 1s;
+        }
+        
+        .chuva img:nth-child(3) {
+            left: 25%;
+            animation-delay: 2s;
+        }
+        
+        .chuva img:nth-child(4) {
+            left: 40%;
+            animation-delay: 0.5s;
+        }
+        
+        .chuva img:nth-child(5) {
+            left: 55%;
+            animation-delay: 1.5s;
+        }
+        
+        .chuva img:nth-child(6) {
+            left: 70%;
+            animation-delay: 2.5s;
+        }
+        
+        .chuva img:nth-child(7) {
+            left: 80%;
+            animation-delay: 3s;
+        }
+        
+        .chuva img:nth-child(8) {
+            left: 90%;
+            animation-delay: 3.5s;
+        }
+    </style>
+
+
+
     </style>
 </head>
 
@@ -70,6 +148,33 @@
     <audio autoplay loop>
   <source src="p2.mp3" type="audio/mpeg">
 </audio>
+
+    <div class="mensagem">
+        🎉 Feliz 2 Meses ❤️
+    </div>
+
+    <div class="chuva">
+        <img src="20.jpg" alt=".">
+        <img src="2.jpg" alt=".">
+        <img src="3.jpg" alt=".">
+        <img src="9.jpg" alt=".">
+        <img src="14.jpg" alt=".">
+        <img src="15.jpg" alt=".">
+        <img src="16.jpg" alt=".">
+        <img src="12.jpg" alt=".">
+        <img src="16.jpg" alt=".">
+        <img src="17.jpg" alt=".">
+
+
+        <!-- Pode adicionar quantas quiser -->
+    </div>
+
+    <script>
+        setTimeout(() => {.
+            document.querySelector('.chuva').style.display = 'none';
+        }, 30000); // 30000 milissegundos = 30 segundos
+    </script>
+
 
     <footer>
         Página criada para mostrar os melhores momentos ❤️- BATMAN
