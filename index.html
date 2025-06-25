@@ -1,338 +1,262 @@
-<<!DOCTYPE html>
-    <html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta charset="UTF-8" />
-        <title>Escolha o que deseja ver</title>
-        <style>
-            body {
-                background: linear-gradient(to bottom, #ffe6f0, #ffd1dc);
-                font-family: 'Segoe UI', sans-serif;
-                text-align: center;
-                color: #4a4a4a;
-                padding: 60px 20px;
-                margin: 0;
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Escolha o que deseja ver</title>
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 230, 240, 0.8), rgba(255, 209, 220, 0.8)),
+                        url('34.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            color: #4a4a4a;
+            padding: 60px 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #b30059;
+            margin-bottom: 40px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .botao {
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .botao:hover {
+            background-color: #e85ca8;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-style: italic;
+            color: #993366;
+        }
+
+        .mensagem {
+            position: fixed;
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #ff66a3;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            animation: aparecer 2s ease, sumir 1s ease 28s forwards;
+        }
+
+        .chuva img {
+            position: fixed;
+            top: -150px;
+            width: 80px;
+            opacity: 0.9;
+            z-index: 999;
+            animation: cair 6s linear infinite;
+        }
+
+        @keyframes cair {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
             }
-            
-            h1 {
-                font-size: 2.5em;
-                color: #b30059;
-                margin-bottom: 40px;
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
             }
-            
-            .botoes {
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                flex-wrap: wrap;
-            }
-            
-            .botao {
-                background-color: #ff99cc;
-                color: white;
-                border: none;
-                padding: 20px 40px;
-                border-radius: 15px;
-                font-size: 1.2em;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                text-decoration: none;
-            }
-            
-            .botao:hover {
-                background-color: #e85ca8;
-            }
-            
-            footer {
-                margin-top: 50px;
-                font-style: italic;
-                color: #993366;
-            }
-            
-            .mensagem {
-                position: fixed;
-                top: 20%;
-                left: 80%;
-                transform: translate(-50%, -50%);
-                font-size: 60px;
-                color: #ff66a3;
-                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-                z-index: 9999;
-                animation: aparecer 2s ease, sumir 1s ease 28s forwards;
-            }
-            
-            .chuva img {
-                position: fixed;
-                top: -150px;
-                width: 80px;
-                opacity: 0.9;
-                z-index: 999;
-                animation: cair 6s linear infinite;
-            }
-            /* Animação da queda */
-            
-            @keyframes cair {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(120vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-            /* Posições e atrasos para parecer aleatório */
-            
-            .chuva img:nth-child(1) {
-                left: 5%;
-                animation-delay: 0s;
-            }
-            
-            .chuva img:nth-child(2) {
-                left: 15%;
-                animation-delay: 1s;
-            }
-            
-            .chuva img:nth-child(3) {
-                left: 25%;
-                animation-delay: 2s;
-            }
-            
-            .chuva img:nth-child(4) {
-                left: 40%;
-                animation-delay: 0.5s;
-            }
-            
-            .chuva img:nth-child(5) {
-                left: 55%;
-                animation-delay: 1.5s;
-            }
-            
-            .chuva img:nth-child(6) {
-                left: 70%;
-                animation-delay: 2.5s;
-            }
-            
-            .chuva img:nth-child(7) {
-                left: 80%;
-                animation-delay: 3s;
-            }
-            
-            .chuva img:nth-child(8) {
-                left: 90%;
-                animation-delay: 3.5s;
-            }
-            /* CRONÔMETRO - POSICIONAMENTO E ESTILIZAÇÃO */
-            
+        }
+
+        .chuva img:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .chuva img:nth-child(2) { left: 15%; animation-delay: 1s; }
+        .chuva img:nth-child(3) { left: 25%; animation-delay: 2s; }
+        .chuva img:nth-child(4) { left: 40%; animation-delay: 0.5s; }
+        .chuva img:nth-child(5) { left: 55%; animation-delay: 1.5s; }
+        .chuva img:nth-child(6) { left: 70%; animation-delay: 2.5s; }
+        .chuva img:nth-child(7) { left: 80%; animation-delay: 3s; }
+        .chuva img:nth-child(8) { left: 90%; animation-delay: 3.5s; }
+
+        /* Cronômetro - tamanho reduzido em 25% */
+        .cronometro {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #1f1f1fcc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255 255 255 / 0.2);
+            display: flex;
+            gap: 15px;
+            z-index: 10000;
+            user-select: none;
+            font-family: Arial, sans-serif;
+        }
+
+        .tempo {
+            text-align: center;
+            min-width: 50px;
+            color: white;
+        }
+
+        .tempo span {
+            display: block;
+            font-size: 2.1rem; /* Antes era 2.8rem */
+            font-weight: 700;
+            transition: all 0.4s ease;
+            will-change: transform, color;
+        }
+
+        .tempo label {
+            font-size: 0.9rem;
+            user-select: text;
+        }
+
+        @media (max-width: 480px) {
             .cronometro {
-                position: fixed;
-                top: 10px;
-                left: 10px;
-                background-color: #1f1f1fcc;
-                padding: 15px 20px;
-                border-radius: 12px;
-                box-shadow: 0 0 10px rgba(255 255 255 / 0.2);
-                display: flex;
-                gap: 15px;
-                z-index: 10000;
-                user-select: none;
-                font-family: Arial, sans-serif;
+                padding: 10px 12px;
+                gap: 8px;
             }
-            
-            .tempo {
-                text-align: center;
-                min-width: 50px;
-                color: white;
-            }
-            
+
             .tempo span {
-                display: block;
-                font-size: 2.8rem;
-                font-weight: 700;
-                transition: all 0.4s ease;
-                will-change: transform, color;
+                font-size: 1.6rem; /* Antes era 2rem, reduzido também */
             }
-            
+
             .tempo label {
-                font-size: 0.9rem;
-                user-select: text;
+                font-size: 0.8rem;
             }
-            
-            @media (max-width: 480px) {
-                .cronometro {
-                    padding: 10px 12px;
-                    gap: 8px;
-                }
-                .tempo span {
-                    font-size: 2rem;
-                }
-                .tempo label {
-                    font-size: 0.8rem;
-                }
-            }
-            /* Efeito de pulso leve quando atualiza o número */
-            
-            .pulse {
-                animation: pulseAnim 0.3s ease forwards;
-            }
-            
-            @keyframes pulseAnim {
-                0% {
-                    transform: scale(1);
-                    color: #fff;
-                }
-                50% {
-                    transform: scale(1.2);
-                    color: #00ffcc;
-                }
-                100% {
-                    transform: scale(1);
-                    color: #fff;
-                }
-            }
-        </style>
-    </head>
+        }
 
-    <body>
+        .pulse {
+            animation: pulseAnim 0.3s ease forwards;
+        }
 
-        <!-- CRONÔMETRO FIXO NO TOPO ESQUERDO -->
-        <section aria-label="Cronômetro desde 1 de janeiro de 2024" class="cronometro" role="timer" aria-live="polite" aria-atomic="true">
+        @keyframes pulseAnim {
+            0% { transform: scale(1); color: #fff; }
+            50% { transform: scale(1.2); color: #00ffcc; }
+            100% { transform: scale(1); color: #fff; }
+        }
+    </style>
+</head>
 
-            <div class="tempo">
-                <span id="meses" aria-label="Meses">00</span>
-                <label>Meses</label>
-            </div>
-            <div class="tempo">
-                <span id="dias" aria-label="Dias">00</span>
-                <label>Dias</label>
-            </div>
-            <div class="tempo">
-                <span id="horas" aria-label="Horas">00</span>
-                <label>Horas</label>
-            </div>
-            <div class="tempo">
-                <span id="minutos" aria-label="Minutos">00</span>
-                <label>Minutos</label>
-            </div>
-            <div class="tempo">
-                <span id="segundos" aria-label="Segundos">00</span>
-                <label>Segundos</label>
-            </div>
-        </section>
+<body>
 
-        <h1>Bem-vindo ao Novo mundo 🦇💖</h1>
-        <p>Escolha o que deseja explorar:</p>
+    <!-- CRONÔMETRO -->
+    <section aria-label="Cronômetro desde 1 de janeiro de 2024" class="cronometro" role="timer" aria-live="polite" aria-atomic="true">
+        <div class="tempo"><span id="meses" aria-label="Meses">00</span><label>Meses</label></div>
+        <div class="tempo"><span id="dias" aria-label="Dias">00</span><label>Dias</label></div>
+        <div class="tempo"><span id="horas" aria-label="Horas">00</span><label>Horas</label></div>
+        <div class="tempo"><span id="minutos" aria-label="Minutos">00</span><label>Minutos</label></div>
+        <div class="tempo"><span id="segundos" aria-label="Segundos">00</span><label>Segundos</label></div>
+    </section>
 
-        <div class="botoes">
-            <a href="test_1.html" class="botao">🌸 Ver Fotos</a>
-            <a href="video.html" class="botao">🎥 Ver Vídeos</a>
-        </div>
-        <p>
-            Há sorrisos que não pertencem a este mundo… o teu, por exemplo. Um sorriso que adormece tempestades, que embriaga minha lucidez, que me faz esquecer onde termina o real e onde começa o encantamento. Não é acaso. Deus, em silêncio, me moveu, redesenhou
+    <h1>Bem-vindo ao Novo mundo 🦇💖</h1>
+    <p>Escolha o que deseja explorar:</p>
+
+    <div class="botoes">
+        <a href="test_1.html" class="botao">🌸 Ver Fotos</a>
+        <a href="video.html" class="botao">🎥 Ver Vídeos</a>
+    </div>
+
+    <p>
+     Há sorrisos que não pertencem a este mundo… o teu, por exemplo. Um sorriso que adormece tempestades, que embriaga minha lucidez, que me faz esquecer onde termina o real e onde começa o encantamento. Não é acaso. Deus, em silêncio, me moveu, redesenhou
             meus passos, alinhou as estrelas tortas só para que eu te encontrasse. Você… que sem saber, se tornou a tradução exata da minha felicidade. E, mesmo que a insegurança sussurre seus medos nas frestas da minha alma, há algo em você que cala
             qualquer sombra. Porque amar você é como acender um farol no meio do próprio abismo — estranho, assustador... e, ainda assim, absurdamente lindo. Você é minha nova paixão. Meu recomeço. Aquilo que o universo inteiro tentou esconder, mas, de
             algum jeito, encontrei 💖🦇🦇
-        </p>
+    </p>
 
-        <audio autoplay loop>
+    <audio autoplay loop>
         <source src="p2.mp3" type="audio/mpeg" />
     </audio>
 
-        <div class="mensagem">
-        </div>
+    <div class="mensagem"></div>
 
-        <div class="chuva">
-            <img src="20.jpg" alt="Imagem decorativa" />
-            <img src="2.jpg" alt="Imagem decorativa" />
-            <img src="3.jpg" alt="Imagem decorativa" />
-            <img src="9.jpg" alt="Imagem decorativa" />
-            <img src="14.jpg" alt="Imagem decorativa" />
-            <img src="15.jpg" alt="Imagem decorativa" />
-            <img src="16.jpg" alt="Imagem decorativa" />
-            <img src="12.jpg" alt="Imagem decorativa" />
-            <img src="16.jpg" alt="Imagem decorativa" />
-            <img src="17.jpg" alt="Imagem decorativa" />
-            <!-- Pode adicionar quantas quiser -->
-        </div>
+    <div class="chuva">
+        <img src="20.jpg" alt="Imagem decorativa" />
+        <img src="2.jpg" alt="Imagem decorativa" />
+        <img src="3.jpg" alt="Imagem decorativa" />
+        <img src="9.jpg" alt="Imagem decorativa" />
+        <img src="14.jpg" alt="Imagem decorativa" />
+        <img src="15.jpg" alt="Imagem decorativa" />
+        <img src="16.jpg" alt="Imagem decorativa" />
+        <img src="12.jpg" alt="Imagem decorativa" />
+        <img src="16.jpg" alt="Imagem decorativa" />
+        <img src="17.jpg" alt="Imagem decorativa" />
+    </div>
 
-        <script>
-            setTimeout(() => {
-                document.querySelector('.chuva').style.display = 'none';
-            }, 20000); // 20000 milissegundos = 20 segundos
+    <script>
+        setTimeout(() => {
+            document.querySelector('.chuva').style.display = 'none';
+        }, 20000);
 
-            const dataInicial = new Date('2025-04-18T00:00:00');
+        const dataInicial = new Date('2025-04-18T00:00:00');
 
-            // Função para calcular meses e dias reais
-            function diferencaMesesDias(inicio, fim) {
-                let anosDiff = fim.getFullYear() - inicio.getFullYear();
-                let mesesDiff = fim.getMonth() - inicio.getMonth();
-                let diasDiff = fim.getDate() - inicio.getDate();
+        function diferencaMesesDias(inicio, fim) {
+            let anosDiff = fim.getFullYear() - inicio.getFullYear();
+            let mesesDiff = fim.getMonth() - inicio.getMonth();
+            let diasDiff = fim.getDate() - inicio.getDate();
+            if (diasDiff < 0) {
+                const ultimoDiaMesAnterior = new Date(fim.getFullYear(), fim.getMonth(), 0).getDate();
+                diasDiff += ultimoDiaMesAnterior;
+                mesesDiff--;
+            }
+            if (mesesDiff < 0) {
+                mesesDiff += 12;
+                anosDiff--;
+            }
+            return { meses: anosDiff * 12 + mesesDiff, dias: diasDiff };
+        }
 
-                // Ajuste dos dias e meses se necessário
-                if (diasDiff < 0) {
-                    // Pega o último dia do mês anterior ao fim
-                    const ultimoDiaMesAnterior = new Date(fim.getFullYear(), fim.getMonth(), 0).getDate();
-                    diasDiff += ultimoDiaMesAnterior;
-                    mesesDiff--;
+        function atualizarCronometro() {
+            const agora = new Date();
+            const { meses, dias } = diferencaMesesDias(dataInicial, agora);
+            const horas = agora.getHours();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
+
+            function atualizarElemento(id, valor) {
+                const el = document.getElementById(id);
+                const valorStr = String(valor).padStart(2, '0');
+                if (el.textContent !== valorStr) {
+                    el.textContent = valorStr;
+                    el.classList.remove('pulse');
+                    void el.offsetWidth;
+                    el.classList.add('pulse');
                 }
-
-                if (mesesDiff < 0) {
-                    mesesDiff += 12;
-                    anosDiff--;
-                }
-
-                const totalMeses = anosDiff * 12 + mesesDiff;
-
-                return {
-                    meses: totalMeses,
-                    dias: diasDiff
-                };
             }
 
-            function atualizarCronometro() {
-                const agora = new Date();
+            atualizarElemento('meses', meses);
+            atualizarElemento('dias', dias);
+            atualizarElemento('horas', horas);
+            atualizarElemento('minutos', minutos);
+            atualizarElemento('segundos', segundos);
+        }
 
-                // Calcular meses e dias reais
-                const {
-                    meses,
-                    dias
-                } = diferencaMesesDias(dataInicial, agora);
+        atualizarCronometro();
+        setInterval(atualizarCronometro, 1000);
+    </script>
 
-                // Calcular horas, minutos e segundos
-                const horas = agora.getHours();
-                const minutos = agora.getMinutes();
-                const segundos = agora.getSeconds();
+    <footer>
+        Página criada para mostrar os melhores momentos ❤️- BATMAN
+    </footer>
 
-                // Função para atualizar um campo com animação de pulso
-                function atualizarElemento(id, valor) {
-                    const el = document.getElementById(id);
-                    const valorStr = String(valor).padStart(2, '0');
-                    if (el.textContent !== valorStr) {
-                        el.textContent = valorStr;
-                        el.classList.remove('pulse');
-                        // Força reflow para reiniciar animação
-                        void el.offsetWidth;
-                        el.classList.add('pulse');
-                    }
-                }
+</body>
 
-                atualizarElemento('meses', meses);
-                atualizarElemento('dias', dias);
-                atualizarElemento('horas', horas);
-                atualizarElemento('minutos', minutos);
-                atualizarElemento('segundos', segundos);
-            }
-
-            atualizarCronometro();
-            setInterval(atualizarCronometro, 1000);
-        </script>
-
-        <footer>
-            Página criada para mostrar os melhores momentos ❤️- BATMAN
-        </footer>
-
-    </body>
-
-    </html>
+</html>

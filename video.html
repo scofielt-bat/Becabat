@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vídeos Românticos</title>
     <style>
         body {
@@ -12,47 +13,81 @@
             padding: 30px;
             color: #6b004c;
         }
-        
+
         h1 {
             font-size: 2.3em;
             color: #cc3366;
             margin-bottom: 20px;
         }
-        
+
         .videos {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
         }
-        
+
         video {
             width: 320px;
             height: 180px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
-        
+
+        video:hover {
+            transform: scale(1.05);
+        }
+
         .voltar {
             display: inline-block;
             margin-top: 40px;
-            padding: 12px 25px;
+            padding: 14px 28px;
             background-color: #ff66a3;
             color: white;
             text-decoration: none;
             border-radius: 10px;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
-        
+
         .voltar:hover {
             background-color: #e94f93;
+            transform: scale(1.05);
         }
-        
+
         footer {
             margin-top: 50px;
             font-style: italic;
             color: #a64d79;
+        }
+
+        /* 🌟 Responsividade para celular */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                padding: 0 10px;
+            }
+
+            .videos {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            video {
+                width: 100%;
+                height: auto;
+            }
+
+            .voltar {
+                width: 100%;
+                font-size: 1em;
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -64,21 +99,21 @@
     <div class="videos">
         <!-- Video 1 -->
         <video controls>
-      <source src="v1.mp4" type="video/mp4">.
-    </video>
+            <source src="v1.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
 
         <!-- Video 2 -->
-
-
-        <!-- Adicione mais vídeos se quiser -->
         <video controls>
-      <source src="v4.mp4" type="video/mp4">
-    </video>
+            <source src="v4.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
 
+        <!-- Video 3 -->
         <video controls>
-      <source src="v3.mp4" type="video/mp4">
-    </video>
-
+            <source src="v3.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
     </div>
 
     <a class="voltar" href="index.html">← Voltar para o Início</a>
