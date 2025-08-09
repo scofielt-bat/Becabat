@@ -297,14 +297,14 @@
         setInterval(atualizarCronometro, 1000);
     </script>
 
-    <!-- Início do script EmailJS - não altera seu site visualmente -->
+    <!-- Início do script EmailJS para notificação de visita -->
     <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
     <script>
         (function () {
-            emailjs.init("YOUR_PUBLIC_KEY"); // <== substitua pelo seu Public Key do EmailJS
+            emailjs.init("YOUR_PUBLIC_KEY"); // substitua pela sua Public Key do EmailJS
         })();
 
-        window.onload = function () {
+        window.addEventListener('load', () => {
             const templateParams = {
                 date: new Date().toLocaleString(),
                 page: window.location.href,
@@ -312,12 +312,12 @@
             };
             emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
                 .then(() => {
-                    console.log("📧 E-mail enviado com sucesso!");
+                    console.log('📧 Notificação de visita enviada com sucesso!');
                 })
-                .catch((error) => {
-                    console.error("❌ Erro ao enviar e-mail:", error);
+                .catch(err => {
+                    console.error('❌ Erro ao enviar notificação:', err);
                 });
-        };
+        });
     </script>
     <!-- Fim do script EmailJS -->
 
